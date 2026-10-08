@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Приглашение на День Рождения</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-image: url('img/4b4748e217afacc62755be350be9d6d0.jpg');
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #4e342e;
+    padding: 0 10px;
+  }
+
+  .container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 90%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
+
+  .text {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    min-height: 100px;
+  }
+
+  button {
+    padding: 12px 25px;
+    font-size: 1em;
+    background-color: #fcbf49;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  button:hover {
+    background-color: #f29d2f;
+  }
+
+  @media(max-width: 600px){
+    h1 {
+      font-size: 2em;
+    }
+    .text {
+      font-size: 1em;
+    }
+  }
+</style>
+</head>
+<body>
+
+<h1 id="mainTitle"> Бэ-бэ-бу! </h1>
+<!-- Тут изначально лепет, потом текст, по нажатию он менится -->
+
+<div class="container">
+  <div class="text" id="invitationText">
+     Иии уаууууу Еииеиеи пффффф э А А А тртртртртр ням ням, оаоаоа бубубуб па бебебе пщпщпщптрпт 
+  </div>
+  <button id="toggleButton">Перевод с малышкового</button>
+</div>
+
+<script>
+  const titles = [
+    " Бэ-бэ-бу! ", // Лепет
+    "  Приветули от Евули! \n ฅ^•ﻌ•^ฅ " // Обычный
+  ];
+
+  const texts = [
+    " Иии уаууууу Еииеиеи пффффф э А А А тртртртртр ням ням, оаоаоа бубубуб па бебебе пщпщпщптрпт",
+    " Приглашаю вас на мой первый День Рождения! 🎊🎊🎊 \ Мне уже целый годик 🥳 и я такая радая 🐱, поэтому хочу разделить эту радость с вами🎉\ Жду вас такого то такого то, там то там то, во столько то во столько то \ Захватите с собой улыбки и хорошее настроение 🤗, целую по малышычьи 💞! Жду 💖 \ P.S. условие то же: Главное не балейти ʕ•́ᴥ•̀ʔ"
+  ];
+
+  const button = document.getElementById('toggleButton');
+  const textDiv = document.getElementById('invitationText');
+  const titleEl = document.getElementById('mainTitle');
+
+  let isSecondText = false;
+  let isSecondTitle = false;
+
+  button.addEventListener('click', () => {
+    // Меняем основной текст
+    if (!isSecondText) {
+      textDiv.innerHTML = texts[1];
+      button.innerText = 'Вернуться к малышковому';
+    } else {
+      textDiv.innerHTML = texts[0];
+      button.innerText = 'Перевод с малышкового';
+    }
+    isSecondText = !isSecondText;
+
+    // Меняем заголовок
+    if (!isSecondTitle) {
+      titleEl.innerHTML = titles[1];
+    } else {
+      titleEl.innerHTML = titles[0];
+    }
+    isSecondTitle = !isSecondTitle;
+  });
+</script>
+
+</body>
+</html>
